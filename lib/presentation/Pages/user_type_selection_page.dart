@@ -84,7 +84,7 @@ class _UserTypeSelectionPageState extends State<UserTypeSelectionPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SelectableOption(
+                  SelectableOptionWidget(
                     title: 'Need a Service',
                     icon: Icons.help_outline,
                     selected: selectedServiceType == 'Need',
@@ -92,9 +92,9 @@ class _UserTypeSelectionPageState extends State<UserTypeSelectionPage> {
                       setState(() {
                         selectedServiceType = 'Need';
                       });
-                    },
+                    }, height: 120, width:  MediaQuery.of(context).size.width * 0.4,
                   ),
-                  SelectableOption(
+                  SelectableOptionWidget(
                     title: 'Provide A Service',
                     icon: Icons.work_outline,
                     selected: selectedServiceType == 'Provide',
@@ -102,7 +102,7 @@ class _UserTypeSelectionPageState extends State<UserTypeSelectionPage> {
                       setState(() {
                         selectedServiceType = 'Provide';
                       });
-                    },
+                    }, height: 120, width:  MediaQuery.of(context).size.width * 0.4,
                   ),
                 ],
               ),

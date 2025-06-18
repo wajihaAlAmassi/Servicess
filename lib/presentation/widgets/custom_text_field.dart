@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:services_application/core/utils/app_colors.dart';
 
 class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
@@ -9,7 +10,7 @@ class CustomTextField extends StatelessWidget {
     super.key,
     required this.controller,
     required this.hint,
-    this.maxLines = 1,
+    this.maxLines = 1, 
   });
 
   @override
@@ -22,7 +23,7 @@ class CustomTextField extends StatelessWidget {
         decoration: InputDecoration(
           hintText: hint,
           filled: true,
-          fillColor: Colors.grey.shade100,
+          fillColor: AppColors.borderGrey,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide.none,

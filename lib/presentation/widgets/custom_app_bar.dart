@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:services_application/core/utils/app_colors.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key});
@@ -8,7 +9,7 @@ class CustomAppBar extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: const BoxDecoration(
-        color: Color(0xFFF78DCB),
+        color: AppColors.primaryPink,
         borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
       ),
       child: Row(
@@ -19,19 +20,28 @@ class CustomAppBar extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  const Text('MY', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white)),
+                  const Text('MY',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: AppColors.white)),
                   const SizedBox(width: 6),
-                  Container(width: 32, height: 5, color: Colors.amber),
+                  Container(
+                      width: 32, height: 5, color: AppColors.yellowAccent),
                 ],
               ),
-              const Text('SERVICES', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white)),
+              const Text('SERVICES',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                      color: AppColors.white)),
             ],
           ),
           const Row(
             children: [
-              Icon(Icons.notifications, color: Colors.white),
+              Icon(Icons.notifications, color: AppColors.white),
               SizedBox(width: 16),
-              Icon(Icons.settings, color: Colors.white),
+              Icon(Icons.message_outlined, color: AppColors.white),
             ],
           ),
         ],

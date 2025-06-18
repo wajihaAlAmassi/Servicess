@@ -81,7 +81,7 @@ class _UserTypeSelectionPageState extends State<ProviderTypeSelectionPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SelectableOption(
+                  SelectableOptionWidget(
                     title: 'Company',
                     icon: Icons.work_outline,
                     selected: selectedServiceType == 'Company',
@@ -90,8 +90,10 @@ class _UserTypeSelectionPageState extends State<ProviderTypeSelectionPage> {
                         selectedServiceType = 'Company';
                       });
                     },
+                    height: 120,
+                    width: MediaQuery.of(context).size.width * 0.4,
                   ),
-                  SelectableOption(
+                  SelectableOptionWidget(
                     title: 'Solo',
                     icon: Icons.work_outline,
                     selected: selectedServiceType == 'Solo',
@@ -100,6 +102,8 @@ class _UserTypeSelectionPageState extends State<ProviderTypeSelectionPage> {
                         selectedServiceType = 'Solo';
                       });
                     },
+                    height: 120,
+                    width: MediaQuery.of(context).size.width * 0.4,
                   ),
                 ],
               ),
@@ -110,6 +114,9 @@ class _UserTypeSelectionPageState extends State<ProviderTypeSelectionPage> {
                 onPressed: () {
                   if (selectedServiceType == 'Company') {
                     Navigator.pushNamed(context, '/companyregister');
+                  }
+                  else{
+                    Navigator.pushNamed(context, '/registersolo');  
                   }
                 },
                 text: 'Next',
@@ -124,12 +131,7 @@ class _UserTypeSelectionPageState extends State<ProviderTypeSelectionPage> {
                   const Text("Already Have An Account? "),
                   GestureDetector(
                     onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => const RegisterPage(),
-                      //   ),
-                      // );
+                      Navigator.pushNamed(context, '/signin');
                     },
                     child: const Text(
                       'Log In',

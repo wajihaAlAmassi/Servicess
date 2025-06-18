@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:services_application/core/utils/app_colors.dart';
 
 class CustomNextButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -7,7 +8,7 @@ class CustomNextButton extends StatelessWidget {
   const CustomNextButton({
     super.key,
     required this.onPressed,
-   required this.text ,
+   required this.text, 
   });
 
   @override
@@ -18,7 +19,7 @@ class CustomNextButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFFF78DCB),
+          backgroundColor: AppColors.primaryPink,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(18),
           ),

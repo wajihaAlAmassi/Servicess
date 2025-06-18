@@ -20,8 +20,10 @@ class JobDetailPage extends StatelessWidget {
         centerTitle: true,
         title: const Text(
           'Face Book Social Media ...',
-          style: TextStyle(color: AppColors.darkText, fontWeight: FontWeight.bold),
+          style:
+              TextStyle(color: AppColors.darkText, fontWeight: FontWeight.bold),
         ),
+        actions: [IconButton(onPressed: (){}, icon: Icon(Icons.search),color: AppColors.darkText,)],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -72,7 +74,6 @@ class JobDetailPage extends StatelessWidget {
                   Navigator.pushNamed(context, '/applyservice');
                 },
                 text: 'Apply')
-           
           ],
         ),
       ),
@@ -111,8 +112,8 @@ class JobDetailPage extends StatelessWidget {
               Row(
                 children: List.generate(
                   4,
-                  (index) =>
-                      const Icon(Icons.star, color: AppColors.yellowAccent, size: 16),
+                  (index) => const Icon(Icons.star,
+                      color: AppColors.yellowAccent, size: 16),
                 ),
               ),
             ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:services_application/core/utils/app_colors.dart';
 
 class CustomPasswordField extends StatefulWidget {
   final TextEditingController controller;
@@ -33,7 +34,7 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
           },
         ),
         filled: true,
-        fillColor: const Color(0xFFF7F7F7),
+        fillColor: AppColors.white,
         border: OutlineInputBorder(
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.circular(12),

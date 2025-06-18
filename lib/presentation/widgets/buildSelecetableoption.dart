@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
+import '../../core/utils/app_colors.dart';
 
-class SelectableOption extends StatelessWidget {
+class SelectableOptionWidget extends StatelessWidget {
   final String title;
   final IconData icon;
   final bool selected;
   final VoidCallback onTap;
+  final double width;
+  final double height;
 
-  const SelectableOption({
+  const SelectableOptionWidget({
     super.key,
     required this.title,
     required this.icon,
     required this.selected,
     required this.onTap,
+    required this.width,
+    required this.height,
   });
 
   @override
@@ -19,14 +24,16 @@ class SelectableOption extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: MediaQuery.of(context).size.width * 0.4,
+        width: width,
+        height: height,
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: selected ? const Color(0xFF636CD8) : Colors.white,
+          color: selected ? const Color(0xFF636CD8) : AppColors.white,
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: Colors.grey.shade300),
+          border: Border.all(color: AppColors.borderGrey),
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(icon, size: 36, color: selected ? Colors.white : Colors.black),
             const SizedBox(height: 8),
@@ -36,13 +43,12 @@ class SelectableOption extends StatelessWidget {
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
-                color: selected ? Colors.white : Colors.black,
+                color: selected ? AppColors.white : AppColors.darkText,
               ),
-            )
+            ),
           ],
         ),
       ),
     );
   }
 }
-

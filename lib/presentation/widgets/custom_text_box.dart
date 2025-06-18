@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:services_application/core/utils/app_colors.dart';
 
 class CustomTextBox extends StatelessWidget {
   final TextEditingController controller;
@@ -19,9 +20,9 @@ class CustomTextBox extends StatelessWidget {
         maxLines: 3,
         decoration: InputDecoration(
           hintText: hint,
-          hintStyle: const TextStyle(color: Colors.grey),
+          hintStyle: const TextStyle(color: AppColors.lightText),
           filled: true,
-          fillColor: const Color(0xFFF7F7F7),
+          fillColor: AppColors.white,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16),
             borderSide: BorderSide.none,

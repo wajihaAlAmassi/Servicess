@@ -21,17 +21,61 @@ class HomePage extends StatelessWidget {
             child: SearchBarWidget(),
           ),
           const SizedBox(height: 8),
-          Expanded(
-            child: ListView.builder(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              itemCount: 3,
-              itemBuilder: (context, index) {
-                return const Padding(
-                  padding: EdgeInsets.only(bottom: 16),
-                  child: ServiceCard(),
-                );
-              },
-            ),
+          Expanded(child: ListView(
+            children: [
+              Column(
+                children: [
+                  ServiceCard(
+                     onTap:  (){  Navigator.pushNamed(context, '/jobdetails');},
+                            timeAgo: '15',
+                            title: 'FaceBook Social Media Design',
+                            userName: 'Madeha Ahmed',
+                            location: 'Lebanon ',
+                            price: '1500/Month',
+                            rating: 3,
+                            description:
+                                'Lorem Ipsum is simply dummy text of the printing and typesetting industry . lorem Ipsum has been the industry standard dummy text ever since the 1500S',
+                            avatarPath: 'assets/images/avatar.png'),
+                            SizedBox(height: 10,),
+                            ServiceCard(
+                                 onTap:  (){  Navigator.pushNamed(context, '/jobdetails');},
+                            timeAgo: '15',
+                            title: 'FaceBook Social Media Design',
+                            userName: 'Madeha Ahmed',
+                            location: 'Lebanon ',
+                            price: '1500/Month',
+                            rating: 3,
+                            description:
+                                'Lorem Ipsum is simply dummy text of the printing and typesetting industry . lorem Ipsum has been the industry standard dummy text ever since the 1500S',
+                            avatarPath: 'assets/images/avatar.png'),
+                            SizedBox(height: 10,),
+                            ServiceCard(
+                                 onTap:  (){  Navigator.pushNamed(context, '/jobdetails');},
+                            timeAgo: '15',
+                            title: 'FaceBook Social Media Design',
+                            userName: 'Madeha Ahmed',
+                            location: 'Lebanon ',
+                            price: '1500/Month',
+                            rating: 3,
+                            description:
+                                'Lorem Ipsum is simply dummy text of the printing and typesetting industry . lorem Ipsum has been the industry standard dummy text ever since the 1500S',
+                            avatarPath: 'assets/images/avatar.png'),
+                            SizedBox(height: 10,),
+                            ServiceCard(
+                                 onTap:  (){  Navigator.pushNamed(context, '/jobdetails');},
+                            timeAgo: '15',
+                            title: 'FaceBook Social Media Design',
+                            userName: 'Madeha Ahmed',
+                            location: 'Lebanon ',
+                            price: '1500/Month',
+                            rating: 3,
+                            description:
+                                'Lorem Ipsum is simply dummy text of the printing and typesetting industry . lorem Ipsum has been the industry standard dummy text ever since the 1500S',
+                            avatarPath: 'assets/images/avatar.png'),
+                ],
+              )
+            ],
+          )
           ),
         ],
       ),
