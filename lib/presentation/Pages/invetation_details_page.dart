@@ -185,7 +185,7 @@ class InvitationDetailsPage extends StatelessWidget {
     const SizedBox(height: 12),
     ElevatedButton(
       onPressed: () {
-        // كود الرفض
+     
       },
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.red,

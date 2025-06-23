@@ -11,7 +11,8 @@ class RegisterSoloPagePersonal extends StatefulWidget {
   const RegisterSoloPagePersonal({super.key});
 
   @override
-  State<RegisterSoloPagePersonal> createState() => _RegisterSoloPagePersonalState();
+  State<RegisterSoloPagePersonal> createState() =>
+      _RegisterSoloPagePersonalState();
 }
 
 class _RegisterSoloPagePersonalState extends State<RegisterSoloPagePersonal> {
@@ -21,10 +22,11 @@ class _RegisterSoloPagePersonalState extends State<RegisterSoloPagePersonal> {
   final TextEditingController experienceController = TextEditingController();
   final TextEditingController educationController = TextEditingController();
   final TextEditingController preferredWorkController = TextEditingController();
-  
+
   final TextEditingController skillController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
 
   List<String> skills = [];
   String? selectedEducation;
@@ -51,16 +53,17 @@ class _RegisterSoloPagePersonalState extends State<RegisterSoloPagePersonal> {
   void dispose() {
     jobTitleController.dispose();
     experienceController.dispose();
-    
+
     skillController.dispose();
     passwordController.dispose();
     confirmPasswordController.dispose();
     super.dispose();
   }
- String workType = 'Full Time';
+
+  String workType = 'Full Time';
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
         backgroundColor: AppColors.white,
@@ -88,80 +91,95 @@ class _RegisterSoloPagePersonalState extends State<RegisterSoloPagePersonal> {
                   style: TextStyle(color: AppColors.lightText),
                 ),
                 const SizedBox(height: 24),
-                CustomTextField(controller: jobTitleController, hint: 'Job Title'),
+                CustomTextField(
+                    controller: jobTitleController, hint: 'Job Title'),
                 const SizedBox(height: 12),
-                CustomTextField(controller: experienceController, hint: 'Years of Experience'),
+                CustomTextField(
+                    controller: experienceController,
+                    hint: 'Years of Experience'),
                 const SizedBox(height: 12),
-               DropdownButtonFormField<String>(
-  value: selectedEducation,
-  decoration: InputDecoration(
-    hintText: 'Education Level',
-    filled: true,
-    fillColor: Colors.grey.shade100,
-    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12), 
-      borderSide: BorderSide.none,
-    ),
-  ),
-  icon: const Icon(Icons.keyboard_arrow_down_rounded, color: Colors.black),
-  dropdownColor: Colors.white,
-  items: educationOptions.map((level) {
-    return DropdownMenuItem(
-      value: level,
-      child: Text(level),
-    );
-  }).toList(),
-  onChanged: (value) {
-    setState(() {
-      selectedEducation = value;
-    });
-  },
-  validator: (value) => value == null ? 'Please select your education level' : null,
-),
-                
+                DropdownButtonFormField<String>(
+                  value: selectedEducation,
+                  decoration: InputDecoration(
+                    hintText: 'Education Level',
+                    filled: true,
+                    fillColor: Colors.grey.shade100,
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 16),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide.none,
+                    ),
+                  ),
+                  icon: const Icon(Icons.keyboard_arrow_down_rounded,
+                      color: Colors.black),
+                  dropdownColor: Colors.white,
+                  items: educationOptions.map((level) {
+                    return DropdownMenuItem(
+                      value: level,
+                      child: Text(level),
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(() {
+                      selectedEducation = value;
+                    });
+                  },
+                  validator: (value) => value == null
+                      ? 'Please select your education level'
+                      : null,
+                ),
                 const SizedBox(height: 12),
-                CustomTextField(controller: preferredWorkController, hint: 'Preferred Work nature'),
+                CustomTextField(
+                    controller: preferredWorkController,
+                    hint: 'Preferred Work nature'),
                 const SizedBox(height: 12),
-               const Text('Preferred Work nature',style: TextStyle(color:AppColors.darkText,fontWeight:FontWeight.bold ),),
+                const Text(
+                  'Preferred Work nature',
+                  style: TextStyle(
+                      color: AppColors.darkText, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
                 Row(
                   children: [
-                     Expanded(child: SelectableOptionWidget(
+                    Expanded(
+                        child: SelectableOptionWidget(
                       height: 70,
-                      width: 70, 
-                      icon:Icons.abc_outlined, onTap: () {  
-                         setState(() {
-                            workType = 'Part Time';
-                          });
-                      }, selected: workType=='part Time', title: 'Part Time',
-                      
-
+                      width: 70,
+                      onTap: () {
+                        setState(() {
+                          workType = 'Part Time';
+                        });
+                      },
+                      selected: workType == 'part Time',
+                      title: 'Part Time',
                     )),
-                 Expanded(child:   SelectableOptionWidget(
+                    Expanded(
+                        child: SelectableOptionWidget(
                       height: 70,
-                      width: 70, 
-                      icon:Icons.abc_outlined, onTap: () {  
-                         setState(() {
-                            workType = 'Full Time';
-                          });
-                      }, selected: workType=='Full Time', title: 'Full Time',
-                      
-
+                      width: 70,
+                      onTap: () {
+                        setState(() {
+                          workType = 'Full Time';
+                        });
+                      },
+                      selected: workType == 'Full Time',
+                      title: 'Full Time',
                     )),
                   ],
                 ),
-
                 const SizedBox(height: 12),
-                 SkillsInput(),
+                SkillsInput(),
                 const SizedBox(height: 12),
-                 CustomPasswordField(
+                CustomPasswordField(
                   controller: passwordController,
                   hint: 'Password',
                 ),
                 CustomPasswordField(
                     hint: 'Confirm Password',
                     controller: confirmPasswordController),
-              
                 CustomNextButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/companyregistercontact');

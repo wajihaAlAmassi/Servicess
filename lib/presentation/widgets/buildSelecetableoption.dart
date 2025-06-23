@@ -3,7 +3,7 @@ import '../../core/utils/app_colors.dart';
 
 class SelectableOptionWidget extends StatelessWidget {
   final String title;
-  final IconData icon;
+  final IconData? icon; 
   final bool selected;
   final VoidCallback onTap;
   final double width;
@@ -12,7 +12,7 @@ class SelectableOptionWidget extends StatelessWidget {
   const SelectableOptionWidget({
     super.key,
     required this.title,
-    required this.icon,
+    this.icon, 
     required this.selected,
     required this.onTap,
     required this.width,
@@ -35,8 +35,10 @@ class SelectableOptionWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, size: 36, color: selected ? Colors.white : Colors.black),
-            const SizedBox(height: 8),
+            if (icon != null) ...[
+              Icon(icon, size: 36, color: selected ? Colors.white : Colors.black),
+              const SizedBox(height: 8),
+            ],
             Text(
               title,
               textAlign: TextAlign.center,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:services_application/presentation/widgets/custom_app_bar.dart';
 
 import '../../core/utils/app_colors.dart';
 import '../widgets/custom_next_button.dart';
@@ -68,7 +69,8 @@ class _CompanyRegisterPageState extends State<CompanyRegisterPage> {
                 CustomNextButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/companyregistercontact');
-                  }, text: 'Next',
+                  },
+                  text: 'Next',
                 ),
               ],
             ),
