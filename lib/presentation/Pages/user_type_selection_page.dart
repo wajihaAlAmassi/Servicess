@@ -17,7 +17,9 @@ class UserTypeSelectionPage extends StatefulWidget {
 }
 
 class _UserTypeSelectionPageState extends State<UserTypeSelectionPage> {
-  String selectedServiceType = 'Provide';
+  
+String? selectedUserType; // 'provider' أو 'requester'
+
 
   @override
   Widget build(BuildContext context) {
@@ -87,20 +89,20 @@ class _UserTypeSelectionPageState extends State<UserTypeSelectionPage> {
                   SelectableOptionWidget(
                     title: 'Need a Service',
                     icon: Icons.help_outline,
-                    selected: selectedServiceType == 'Need',
+                    selected: selectedUserType == 'Need',
                     onTap: () {
                       setState(() {
-                        selectedServiceType = 'Need';
+                        selectedUserType = 'requester';
                       });
                     }, height: 120, width:  MediaQuery.of(context).size.width * 0.4,
                   ),
                   SelectableOptionWidget(
                     title: 'Provide A Service',
                     icon: Icons.work_outline,
-                    selected: selectedServiceType == 'Provide',
+                    selected: selectedUserType == 'Provide',
                     onTap: () {
                       setState(() {
-                        selectedServiceType = 'Provide';
+                        selectedUserType = 'Provide';
                       });
                     }, height: 120, width:  MediaQuery.of(context).size.width * 0.4,
                   ),
@@ -111,12 +113,18 @@ class _UserTypeSelectionPageState extends State<UserTypeSelectionPage> {
               // زر التالي
 
               CustomNextButton(
-                onPressed: () {
-                  if (selectedServiceType == 'Provide') {
-                    Navigator.pushNamed(context, '/providertype');
-                  }
-                },
-                text: 'Next',
+               onPressed: () {
+    if (selectedUserType != null) {
+      Navigator.pushNamed(
+        context,
+        '/providertype', 
+        arguments: selectedUserType,
+      );
+    }
+  },
+  text: 'Next',
+
+                
               ),
 
               const SizedBox(height: 20),

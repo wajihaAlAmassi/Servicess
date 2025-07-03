@@ -16,7 +16,8 @@ class ProviderTypeSelectionPage extends StatefulWidget {
 }
 
 class _UserTypeSelectionPageState extends State<ProviderTypeSelectionPage> {
-  String selectedServiceType = 'Provide';
+  String? selectedEntityType; 
+
 
   @override
   Widget build(BuildContext context) {

@@ -1,28 +1,24 @@
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:services_application/presentation/widgets/custom_bottom_nav.dart';
-import 'package:services_application/presentation/widgets/profile_header.dart';
+import 'package:services_application/presentation/widgets/info_row.dart';
 
-
-import '../../core/utils/app_colors.dart';
-import '../widgets/info_row.dart';
-import '../widgets/skill_chip.dart';
-import '../widgets/upload_box.dart';
-// ignore: depend_on_referenced_packagesظ
-// import 'package:file_picker/file_picker.dart';
-// import '../../core/theme/app_colors.dart';
+import '../../../core/utils/app_colors.dart';
+import '../../widgets/profile_header.dart';
+import '../../widgets/skill_chip.dart';
+import '../../widgets/upload_box.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
+
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  PlatformFile? cvFile;
+    PlatformFile? cvFile;
   PlatformFile? portfolioFile;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,39 +41,30 @@ class _ProfilePageState extends State<ProfilePage> {
             onPressed: () {},
           ),
         ],
+
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(24),
+        padding: EdgeInsets.all(24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Profile Section
-
-            ProfileHeader(),
-
-            const SizedBox(height: 24),
-
-            // Personal Info
-            const Text('Personal Info',
+            children:[
+              ProfileHeader(),
+              SizedBox(height: 24),
+              Text('Personal Info',
                 style: TextStyle(fontWeight: FontWeight.bold)),
-            InfoRow(label: 'Age', value: '20 Years'),
+               InfoRow(label: 'Age', value: '20 Years'),
             InfoRow(label: 'Year Of Experiences', value: '3 Years'),
             InfoRow(label: 'Education Level', value: "Bachelor's"),
-
-            const SizedBox(height: 24),
-
-            // Contact Info
-            const Text('Contact Info',
+            SizedBox(height: 24),
+            Text('Contact Info',
                 style: TextStyle(fontWeight: FontWeight.bold)),
-            const SizedBox(height: 12),
-            const InfoRow(label: 'Phone number', value: '+966 50 4567 666'),
-            const InfoRow(label: 'Email', value: 'AhmedAli@gmail.com'),
-            const InfoRow(label: 'Location', value: 'Palestine - Gaza'),
+               SizedBox(height: 12),
+               InfoRow(label: 'Phone number', value: '+966 50 4567 666'),
+             InfoRow(label: 'Email', value: 'AhmedAli@gmail.com'),
+           InfoRow(label: 'Location', value: 'Palestine - Gaza'),
 
-            const SizedBox(height: 24),
-
-            // CV Upload
-            const Text('Cv', style: TextStyle(fontWeight: FontWeight.bold)),
+             SizedBox(height: 24), 
+              const Text('Cv', style: TextStyle(fontWeight: FontWeight.bold)),
             const SizedBox(height: 12),
             UploadBox(
               text: 'Upload Your Cv Here',
@@ -129,9 +116,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 SkillChip(label: 'HTML 5'),
               ],
             ),
-            const SizedBox(height: 32),
-            CustomBottomNav(),
-          ],
+
+            ]
         ),
       ),
     );
