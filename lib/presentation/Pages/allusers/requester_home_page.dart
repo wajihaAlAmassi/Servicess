@@ -5,8 +5,8 @@ import '../../widgets/Inputs/search_bar.dart';
 import '../../widgets/Cards/service_card.dart';
 import '../../widgets/appear/custom_bottom_nav.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class ReqHomePage extends StatelessWidget {
+  const ReqHomePage({super.key});
 
   @override
   
@@ -36,14 +36,13 @@ class HomePage extends StatelessWidget {
                       onTap: () {
                         Navigator.pushNamed(context, '/jobdetails');
                       },
-                      timeAgo: '15',
-                      title: 'FaceBook Social Media Design',
-                      userName: 'Madeha Ahmed',
-                      location: 'Lebanon',
-                      price: '1500/Month',
-                      rating: 3,
-                      description:
-                          'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+                          timeAgo: '10',
+            title: 'Logo Design',
+            userName: 'Sarah Kamel',
+            location: 'Jordan',
+            price: '\$250',
+            rating: 4,
+            description: 'Professional logo design for your business.',
                       avatarPath: 'assets/images/avatar.png',
                     ),
                     const SizedBox(height: 10),
@@ -51,14 +50,13 @@ class HomePage extends StatelessWidget {
                       onTap: () {
                         Navigator.pushNamed(context, '/jobdetails');
                       },
-                      timeAgo: '15',
-                      title: 'FaceBook Social Media Design',
-                      userName: 'Madeha Ahmed',
-                      location: 'Lebanon',
-                      price: '1500/Month',
-                      rating: 3,
-                      description:
-                          'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+                      timeAgo: '20',
+            title: 'App Development',
+            userName: 'Yousef Tarek',
+            location: 'Egypt',
+            price: '\$1000',
+            rating: 5,
+            description: 'Custom mobile apps for Android/iOS.',
                       avatarPath: 'assets/images/avatar.png',
                     ),
                   ],

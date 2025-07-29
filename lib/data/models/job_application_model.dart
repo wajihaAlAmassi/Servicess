@@ -1,36 +1,25 @@
 class JobApplicationModel {
-  final String id;
-  final String jobId;
+  final int jobId;
   final String providerId;
-  final String coverLetter;
-  final DateTime submittedAt;
-  final String status;
+  final String answer1;
+  final String answer2;
+  final String answer3;
 
   JobApplicationModel({
-    required this.id,
     required this.jobId,
     required this.providerId,
-    required this.coverLetter,
-    required this.submittedAt,
-    required this.status,
+    required this.answer1,
+    required this.answer2,
+    required this.answer3,
   });
 
-  factory JobApplicationModel.fromJson(Map<String, dynamic> json) =>
-      JobApplicationModel(
-        id: json['id'],
-        jobId: json['jobId'],
-        providerId: json['providerId'],
-        coverLetter: json['coverLetter'],
-        submittedAt: DateTime.parse(json['submittedAt']),
-        status: json['status'],
-      );
-
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'jobId': jobId,
-        'providerId': providerId,
-        'coverLetter': coverLetter,
-        'submittedAt': submittedAt.toIso8601String(),
-        'status': status,
-      };
+  Map<String, dynamic> toJson() {
+    return {
+      'job_id': jobId,
+      'provider_id': providerId,
+      'answer_1': answer1,
+      'answer_2': answer2,
+      'answer_3': answer3,
+    };
+  }
 }

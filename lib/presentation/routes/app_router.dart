@@ -11,6 +11,7 @@ import 'package:services_application/presentation/Pages/Requister/requester_post
 import 'package:services_application/presentation/Pages/allusers/home_page.dart';
 import 'package:services_application/presentation/Pages/allusers/my_contact_page.dart';
 import 'package:services_application/presentation/Pages/allusers/provider_profile.dart';
+import 'package:services_application/presentation/Pages/allusers/requester_home_page.dart';
 import 'package:services_application/presentation/Pages/allusers/splash_page.dart';
 import 'package:services_application/presentation/Pages/auth/provider_type_selection_page.dart';
 import 'package:services_application/presentation/Pages/auth/register_company_contact_page.dart';
@@ -49,7 +50,7 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const UserTypeSelectionPage());
 
       case AppRoutes.providerType:
-        return MaterialPageRoute(builder: (_) => const ProviderTypeSelectionPage());
+        return MaterialPageRoute(builder: (_) => const EntityTypeSelectionPage());
 
       case AppRoutes.companyRegister:
       return MaterialPageRoute(
@@ -69,9 +70,10 @@ class AppRouter {
            );
         
 
-      case AppRoutes.home:
+      case AppRoutes.providerHome:
         return MaterialPageRoute(builder: (_) => HomePage());
-
+         case AppRoutes.requesterHome:
+        return MaterialPageRoute(builder: (_) => ReqHomePage());
       case AppRoutes.jobDetails:
         return MaterialPageRoute(builder: (_) => JobDetailPage());
 

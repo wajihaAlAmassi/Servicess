@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:services_application/data/repositories/auth_repository.dart';
 import 'package:services_application/presentation/bloc/auth/auth_event.dart';
 import 'package:services_application/presentation/bloc/auth/auth_state.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository authRepository;
@@ -14,26 +15,37 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<VerifyCodePressed>(_onVerify);
   }
 
-  Future<void> _onLogin(LoginButtonPressed event, Emitter<AuthState> emit) async {
-    emit(AuthLoading());
-    try {
-      final token = await authRepository.login(event.email, event.password);
-      _token = token;
-      emit(AuthSuccess(token));
-    } catch (e) {
-      emit(AuthFailure(e.toString()));
-    }
-  }
+Future<void> _onLogin(LoginButtonPressed event, Emitter<AuthState> emit) async {
+  emit(AuthLoading());
+  try {
+    final result = await authRepository.login(event.email, event.password);
+    _token = result['token'];
 
-  Future<void> _onLogout(LogoutPressed event, Emitter<AuthState> emit) async {
-    emit(AuthLoading());
-    try {
-      await authRepository.logout(_token!);
-      emit(LogoutSuccess());
-    } catch (e) {
-      emit(AuthFailure("Log out failed"));
-    }
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('auth_token', _token!);
+    await prefs.setString('user_type', result['userType']);
+
+    emit(AuthSuccess(_token!));
+  } catch (e) {
+    emit(AuthFailure(e.toString()));
   }
+}
+
+
+Future<void> _onLogout(LogoutPressed event, Emitter<AuthState> emit) async {
+  emit(AuthLoading());
+  try {
+    await authRepository.logout(_token!);
+
+    // ⬇️ حذف التوكن
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove('auth_token');
+
+    emit(LogoutSuccess());
+  } catch (e) {
+    emit(AuthFailure("Log out failed"));
+  }
+}
 
 
 Future<void> _onRegister(RegisterPressed event, Emitter<AuthState> emit) async {

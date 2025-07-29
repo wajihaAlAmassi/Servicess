@@ -7,6 +7,7 @@ import 'package:services_application/presentation/bloc/auth/auth_state.dart';
 
 import 'package:services_application/presentation/routes/app_routes.dart';
 import 'package:services_application/presentation/widgets/buttons/custom_next_button.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -31,9 +32,16 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return  BlocListener<AuthBloc, AuthState>(
-  listener: (context, state) {
+  listener: (context, state) async {
     if (state is AuthSuccess) {
-      Navigator.pushReplacementNamed(context, AppRoutes.home);
+     final prefs = await SharedPreferences.getInstance();
+    final userType = prefs.getString('user_type');
+    if (userType == 'requester') {
+        Navigator.pushReplacementNamed(context, AppRoutes.requesterHome);
+      } 
+      else{
+           Navigator.pushReplacementNamed(context, AppRoutes.providerHome);
+      }
     } else if (state is AuthFailure) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Failling login: ${state.error}')),

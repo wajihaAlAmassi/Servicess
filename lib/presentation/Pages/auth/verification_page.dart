@@ -5,6 +5,7 @@ import 'package:services_application/presentation/bloc/auth/auth_bloc.dart';
 import 'package:services_application/presentation/bloc/auth/auth_state.dart';
 import 'package:services_application/presentation/bloc/auth/auth_event.dart';
 import 'package:services_application/presentation/routes/app_routes.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/utils/app_colors.dart';
 import '../../widgets/buttons/custom_next_button.dart';
 import '../../widgets/Inputs/otp_input.dart';
@@ -57,6 +58,17 @@ class _VerifyOtpPageState extends State<VerifyOtpPage> {
       const SnackBar(content: Text('Please enter the complete code')),
     );
   }
+  final email = ModalRoute.of(context)?.settings.arguments as String?;
+
+  if (email != null) {
+    BlocProvider.of<AuthBloc>(context).add(
+      VerifyCodePressed(email: email, code: otpCode),
+    );
+  } else {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Missing email')),
+    );
+  }
 }
 
 
@@ -68,9 +80,16 @@ class _VerifyOtpPageState extends State<VerifyOtpPage> {
   @override
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         if (state is VerificationSuccess) {
-          Navigator.pushReplacementNamed(context, AppRoutes.home);
+      final prefs = await SharedPreferences.getInstance();
+      final userType = prefs.getString('user_type');
+       if(userType == 'requester'){
+          Navigator.pushReplacementNamed(context, AppRoutes.requesterHome);
+       }
+       else{
+          Navigator.pushReplacementNamed(context, AppRoutes.providerHome);
+       }
         } else if (state is AuthFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(state.error)),

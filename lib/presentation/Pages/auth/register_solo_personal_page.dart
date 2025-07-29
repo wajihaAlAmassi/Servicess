@@ -236,7 +236,7 @@ class _RegisterSoloPagePersonalState extends State<RegisterSoloPagePersonal> {
                             .add(RegisterPressed(allData));
                         Navigator.pushNamed(
                           context,
-                    AppRoutes.verifyOtp );
+                    AppRoutes.verifyOtp ,arguments: soloData['email']);
                       },
                       text: 'Next',
                     ),

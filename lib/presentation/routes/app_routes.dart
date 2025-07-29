@@ -5,7 +5,8 @@ class AppRoutes {
   static const providerType = '/providertype';
   static const companyRegister = '/companyregister';
   static const companyContact = '/companyregistercontact';
-  static const home = '/homepage';
+  static const providerHome = '/providerhomepage';
+  static const requesterHome = '/requesterhomepage';
   static const jobDetails = '/jobdetails';
   static const applyService = '/applyservice';
   static const profile = '/profilepage';

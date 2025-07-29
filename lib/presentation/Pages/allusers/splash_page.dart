@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:services_application/core/helper/auth_helper.dart';
+import 'package:services_application/presentation/routes/app_routes.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
 
 import '../../../core/utils/app_colors.dart';
@@ -20,7 +23,26 @@ class _SplashPageState extends State<SplashPage> {
     Timer(const Duration(seconds:3), () {
       Navigator.pushReplacementNamed(context, '/signin');
     });
+      _checkLoginStatus();
   }
+  void _checkLoginStatus() async {
+   final prefs = await SharedPreferences.getInstance();
+  final userType = prefs.getString('user_type');
+  final isLoggedIn = await AuthHelper.isLoggedIn();
+if (isLoggedIn && userType != null) {
+ if (userType == 'Provider') {
+      Navigator.pushReplacementNamed(context, AppRoutes.providerHome);
+ }
+     else {
+      Navigator.pushReplacementNamed(context, AppRoutes.requesterHome);
+    }}
+  else {
+    Navigator.pushReplacementNamed(context, AppRoutes.signIn);
+  }
+
+   
+  } 
+  
 
   @override
   Widget build(BuildContext context) {

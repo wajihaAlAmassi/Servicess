@@ -4,15 +4,15 @@ import '../../../core/utils/app_colors.dart';
 import '../../widgets/Inputs/buildSelecetableoption.dart';
 import '../../widgets/buttons/custom_next_button.dart';
 
-class ProviderTypeSelectionPage extends StatefulWidget {
-  const ProviderTypeSelectionPage({super.key});
+class EntityTypeSelectionPage extends StatefulWidget {
+  const EntityTypeSelectionPage({super.key});
 
   @override
-  State<ProviderTypeSelectionPage> createState() =>
-      _ProviderTypeSelectionPageState();
+  State<EntityTypeSelectionPage> createState() =>
+      _EntityTypeSelectionPageState();
 }
 
-class _ProviderTypeSelectionPageState extends State<ProviderTypeSelectionPage> {
+class _EntityTypeSelectionPageState extends State<EntityTypeSelectionPage> {
   String selectedServiceType = 'Provider'; // Default value
   late String userType;
 
