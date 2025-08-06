@@ -38,14 +38,16 @@ on<LoadMyJobs>((event, emit) async {
   emit(MyJobsLoading());
   try {
     final allJobs = await repository.getMyJobs(event.userId, event.userType);
+
     final inProgress = allJobs.where((job) => job.status == 'in_progress').toList();
     final done = allJobs.where((job) => job.status == 'done').toList();
 
-    emit(MyJobsLoaded(inProgress: inProgress, done: done));
+    emit(MyJobsLoaded(inProgress:inProgress, done:done));
   } catch (e) {
     emit(JobError("Failing uploading jobs"));
   }
 });
+
 
   }
 

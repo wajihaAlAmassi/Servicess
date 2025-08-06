@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:services_application/core/utils/app_colors.dart';
+import 'package:services_application/presentation/bloc/invetation/invetation_bloc.dart';
 import '../../widgets/appear/tag_chip.dart';
 import '../../widgets/appear/bullet_text.dart';
 import '../../widgets/Inputs/skill_chip.dart';
@@ -7,7 +9,10 @@ import '../../widgets/Inputs/skill_chip.dart';
 
 class InvitationDetailsPage extends StatelessWidget {
   const InvitationDetailsPage({super.key});
-
+  void _handleAccept(BuildContext context) {
+    context.read<InvetationBloc>().add(AcceptInvitationEvent(invId: invitationId));
+    Navigator.pop(context);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

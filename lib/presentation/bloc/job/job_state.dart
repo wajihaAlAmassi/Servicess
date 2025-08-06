@@ -1,5 +1,6 @@
 // lib/presentation/bloc/job/job_state.dart
 import 'package:services_application/data/models/job_model.dart';
+import 'package:services_application/data/models/my_job_model.dart';
 
 abstract class JobState {}
 
@@ -27,8 +28,8 @@ class JobDraftSaved extends JobState {
 class MyJobsLoading extends JobState {}
 
 class MyJobsLoaded extends JobState {
-  final List<JobModel> inProgress;
-  final List<JobModel> done;
+  final List<MyJobModel> inProgress;
+  final List<MyJobModel> done;
 
   MyJobsLoaded({required this.inProgress, required this.done});
 }
